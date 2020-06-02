@@ -7,7 +7,7 @@ import (
 	"net"
 	"strconv"
 
-	"github.com/decred/dcrd/connmgr"
+	"github.com/decred/dcrd/connmgr/v2"
 	"github.com/miekg/dns"
 	"golang.org/x/net/proxy"
 )

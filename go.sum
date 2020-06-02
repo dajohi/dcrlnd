@@ -68,8 +68,7 @@ github.com/decred/dcrd/chaincfg/v2 v2.2.0 h1:SBkoqeM9+CkMA1V3i3Ffc4gAC4TqN2EoSRw
 github.com/decred/dcrd/chaincfg/v2 v2.2.0/go.mod h1:hpKvhLCDAD/xDZ3V1Pqpv9fIKVYYi11DyxETguazyvg=
 github.com/decred/dcrd/chaincfg/v2 v2.3.0 h1:ItmU+7DeUtyiabrcW+16MJFgY/BBeeYaPfkBLrFLyjo=
 github.com/decred/dcrd/chaincfg/v2 v2.3.0/go.mod h1:7qUJTvn+y/kswSRZ4sT2+EmvlDTDyy2InvNFtX/hxk0=
-github.com/decred/dcrd/connmgr v1.1.0 h1:JtKI3XjHOlJktaoZupxz8FKEKj/dqGFYJOF+vD/4ydQ=
-github.com/decred/dcrd/connmgr v1.1.0/go.mod h1:LepSJ1qu+cnY6nmUdiVUsX/NTFcd73FNEegrY7wuEpU=
+github.com/decred/dcrd/connmgr/v2 v2.1.0 h1:nfitnK4FXWLvuE5uNNtUjiyBZtwzROEpuWD5OdWeGpo=
 github.com/decred/dcrd/connmgr/v2 v2.1.0/go.mod h1:a3cjZ9xP5Ulm/eptpqma2Is3wHcoUXYvx5gFoOou5J0=
 github.com/decred/dcrd/crypto/blake256 v1.0.0 h1:/8DMNYp9SGi5f0w7uCm6d6M4OU2rGFK09Y2A4Xv7EE0=
 github.com/decred/dcrd/crypto/blake256 v1.0.0/go.mod h1:sQl2p6Y26YV+ZOcSTP6thNdn47hh8kt6rqSlvmrXFAc=

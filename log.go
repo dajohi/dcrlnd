@@ -3,7 +3,7 @@ package dcrlnd
 import (
 	"context"
 
-	"github.com/decred/dcrd/connmgr"
+	"github.com/decred/dcrd/connmgr/v2"
 	"github.com/decred/dcrlnd/autopilot"
 	"github.com/decred/dcrlnd/build"
 	"github.com/decred/dcrlnd/chainntnfs"
