@@ -2865,7 +2865,7 @@ func TestLightningWallet(t *testing.T) {
 	}()
 
 	// Direct the lnwallet and driver logs to the given files.
-	logFilename := fmt.Sprintf("output-lnwallet.log")
+	logFilename := "output-lnwallet.log"
 	logFile, err := os.Create(logFilename)
 	if err != nil {
 		t.Fatalf("Cannot create lnwallet log file: %v", err)
