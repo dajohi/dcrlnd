@@ -103,8 +103,6 @@ github.com/decred/dcrd/dcrjson/v3 v3.0.1 h1:b9cpplNJG+nutE2jS8K/BtSGIJihEQHhFjFA
 github.com/decred/dcrd/dcrjson/v3 v3.0.1/go.mod h1:fnTHev/ABGp8IxFudDhjGi9ghLiXRff1qZz/wvq12Mg=
 github.com/decred/dcrd/dcrutil v1.3.0 h1:LtKIiDnq925yJT/4OpIKKiU9/WaxfD9LfhxrpLSi0Qs=
 github.com/decred/dcrd/dcrutil v1.3.0/go.mod h1:7fUT70QAarhDwQK62g92uDbbYpjXlXngpy5RBiecufo=
-github.com/decred/dcrd/dcrutil v1.4.0 h1:xD5aUqysGQnsnP1c9J0kGeW8lDIwFGC3ja/gE3HnpCs=
-github.com/decred/dcrd/dcrutil v1.4.0/go.mod h1:Bs74gm1jQ9ZAbmEh9FWOEZ1HQzlMg5iPATDMzMnCMlQ=
 github.com/decred/dcrd/dcrutil/v2 v2.0.0 h1:HTqn2tZ8eqBF4y3hJwjyKBmJt16y7/HjzpE82E/crhY=
 github.com/decred/dcrd/dcrutil/v2 v2.0.0/go.mod h1:gUshVAXpd51DlcEhr51QfWL2HJGkMDM1U8chY+9VvQg=
 github.com/decred/dcrd/dcrutil/v2 v2.0.1 h1:aL+c7o7Q66HV1gIif+XkNYo9DeorN3l01Vns8mh0mqs=

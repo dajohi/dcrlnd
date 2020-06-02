@@ -18,10 +18,8 @@ require (
 	github.com/decred/dcrd/dcrec v1.0.0
 	github.com/decred/dcrd/dcrec/secp256k1/v2 v2.0.0
 	github.com/decred/dcrd/dcrjson/v2 v2.2.0
-	github.com/decred/dcrd/dcrutil v1.4.0
 	github.com/decred/dcrd/dcrutil/v2 v2.0.1
 	github.com/decred/dcrd/hdkeychain/v2 v2.1.0
-	github.com/decred/dcrd/mempool/v3 v3.1.0
 	github.com/decred/dcrd/rpc/jsonrpc/types/v2 v2.0.0
 	github.com/decred/dcrd/rpcclient/v5 v5.0.0
 	github.com/decred/dcrd/txscript/v2 v2.1.0
