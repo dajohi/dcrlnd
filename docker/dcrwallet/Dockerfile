@@ -42,9 +42,11 @@ RUN apk add --no-cache \
     ca-certificates
 
 RUN mkdir "/data"
+RUN mkdir "/data/data"
+
 # Copy the compiled binaries and db from the builder image.
 COPY --from=builder /go/bin/dcrwallet /bin/
-COPY --from=builder /data/simnet /data/simnet
+COPY --from=builder /data/data/simnet /data/data/simnet
 COPY --from=builder /data/dcrd.conf /data/dcrd.conf
 
 COPY "start-dcrwallet.sh" .
