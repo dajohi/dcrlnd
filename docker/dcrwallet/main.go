@@ -5,7 +5,6 @@ import (
 	"crypto/tls"
 	"crypto/x509"
 	"fmt"
-	"io/ioutil"
 	"os"
 
 	pb "decred.org/dcrwallet/v2/rpc/walletrpc"
@@ -19,7 +18,7 @@ var (
 )
 
 func tlsCertFromFile(fname string) (*x509.CertPool, error) {
-	b, err := ioutil.ReadFile(fname)
+	b, err := os.ReadFile(fname)
 	if err != nil {
 		return nil, err
 
@@ -100,7 +99,7 @@ func main() {
 
 	// Create the dcrd config file with new mining address
 	data := []byte(fmt.Sprintf("miningaddr=%v", miningAddress))
-	err = ioutil.WriteFile("/data/dcrd.conf", data, 0644)
+	err = os.WriteFile("/data/dcrd.conf", data, 0o644)
 	if err != nil {
 		fmt.Println(err)
 		return
