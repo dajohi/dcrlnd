@@ -13,8 +13,8 @@ linters:
     - asciicheck
     - bidichk
     - bodyclose
+    - copyloopvar
     - errchkjson
-    - exportloopref
     - gofmt
     - gosimple
     - govet
@@ -26,7 +26,6 @@ linters:
     - typecheck
     - unconvert
     - unused
-    - vetshadow
 
 issues:
   # Only show newly introduced problems.
