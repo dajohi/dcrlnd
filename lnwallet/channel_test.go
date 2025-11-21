@@ -10116,6 +10116,8 @@ func assertCleanOrDirty(clean bool, alice, bob *LightningChannel,
 // TestChannelGetDustSum tests that we correctly calculate the channel's dust
 // sum for the local and remote commitments.
 func TestChannelGetDustSum(t *testing.T) {
+	t.Parallel()
+
 	t.Run("dust sum tweakless", func(t *testing.T) {
 		testGetDustSum(t, channeldb.SingleFunderTweaklessBit)
 	})

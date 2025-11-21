@@ -154,7 +154,7 @@ func TestMissionControlStoreFlushing(t *testing.T) {
 	// Set time zone explicitly to keep test deterministic.
 	time.Local = time.UTC
 
-	file, err := os.CreateTemp("", "*.db")
+	file, err := os.CreateTemp(t.TempDir(), "*.db")
 	require.NoError(t, err)
 
 	dbPath := file.Name()
@@ -331,7 +331,7 @@ func BenchmarkMissionControlStoreFlushing(b *testing.B) {
 			// Set time zone explicitly to keep test deterministic.
 			time.Local = time.UTC
 
-			file, err := os.CreateTemp("", "*.db")
+			file, err := os.CreateTemp(b.TempDir(), "*.db")
 			require.NoError(b, err)
 
 			dbPath := file.Name()

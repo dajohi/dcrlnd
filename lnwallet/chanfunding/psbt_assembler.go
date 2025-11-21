@@ -4,12 +4,12 @@ import (
 	"crypto/sha256"
 	"errors"
 	"fmt"
-	"github.com/decred/dcrd/txscript/v4/stdaddr"
 	"sync"
 
 	"github.com/decred/dcrd/chaincfg/v3"
 	"github.com/decred/dcrd/dcrec/secp256k1/v4"
 	"github.com/decred/dcrd/dcrutil/v4"
+	"github.com/decred/dcrd/txscript/v4/stdaddr"
 	"github.com/decred/dcrd/wire"
 	"github.com/decred/dcrlnd/input"
 	"github.com/decred/dcrlnd/internal/psbt"
