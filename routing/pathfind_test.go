@@ -776,6 +776,8 @@ func createTestGraphFromChannels(useCache bool, testChannels []*testChannel,
 // TestPathFinding tests all path finding related cases both with the in-memory
 // graph cached turned on and off.
 func TestPathFinding(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
 		name string
 		fn   func(t *testing.T, useCache bool)
@@ -1027,7 +1029,10 @@ func runBasicGraphPathFinding(t *testing.T, useCache bool) {
 	// finding.
 
 	for _, testCase := range basicGraphPathFindingTests {
+		testCase := testCase
 		t.Run(testCase.target, func(subT *testing.T) {
+			subT.Parallel()
+
 			testBasicGraphPathFindingCase(subT, testGraphInstance, &testCase)
 		})
 	}

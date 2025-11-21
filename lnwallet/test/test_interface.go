@@ -3263,7 +3263,7 @@ func TestLightningWallet(t *testing.T, driverName, backEnd string) {
 	)
 	require.NoError(t, err)
 
-	defer func() {
+	t.Cleanup(func() {
 		err := miningNode.TearDown()
 		if err != nil {
 			t.Errorf("unable to teardown rpc test harness: %v", err)
@@ -3279,7 +3279,7 @@ func TestLightningWallet(t *testing.T, driverName, backEnd string) {
 			t.Logf("could not rename %s to %s: %v\n",
 				oldFileName, newFileName, err)
 		}
-	}()
+	})
 
 	// Generate the premine block.
 	_, err = miningNode.Node.Generate(context.TODO(), 1)
@@ -3292,8 +3292,7 @@ func TestLightningWallet(t *testing.T, driverName, backEnd string) {
 	require.NoError(t, err)
 
 	// Setup a voting wallet for when the chain passes SVH.
-	vwCtx, vwCancel := context.WithCancel(context.Background())
-	defer vwCancel()
+	vwCtx := context.Background()
 	votingWallet, err := rpctest.NewVotingWallet(vwCtx, miningNode)
 	require.NoError(t, err)
 	votingWallet.SetErrorReporting(func(err error) {
@@ -3622,6 +3621,8 @@ func runTests(t *testing.T, walletDriver *lnwallet.WalletDriver,
 		testName := fmt.Sprintf("%v/%v:%v", walletType, backEnd,
 			walletTest.name)
 		success := t.Run(testName, func(t *testing.T) {
+			t.Parallel()
+
 			if backEnd == "spv" &&
 				strings.Contains(walletTest.name, "dual funder") {
 				t.Skip("skipping dual funder tests for spv")

@@ -1327,10 +1327,16 @@ func TestFundingManagerNormalWorkflow(t *testing.T) {
 // TestFundingManagerRejectCSV tests checking of local CSV values against our
 // local CSV limit for incoming and outgoing channels.
 func TestFundingManagerRejectCSV(t *testing.T) {
+	t.Parallel()
+
 	t.Run("csv too high", func(t *testing.T) {
+		t.Parallel()
+
 		testLocalCSVLimit(t, 400, 500)
 	})
 	t.Run("csv within limit", func(t *testing.T) {
+		t.Parallel()
+
 		testLocalCSVLimit(t, 600, 500)
 	})
 }
@@ -3321,6 +3327,8 @@ func TestFundingManagerFundAll(t *testing.T) {
 // the user has provided a script and our local configuration to test that
 // GetUpfrontShutdownScript returns the expected outcome.
 func TestGetUpfrontShutdownScript(t *testing.T) {
+	t.Parallel()
+
 	upfrontScript := []byte("upfront script")
 	generatedScript := []byte("generated script")
 
@@ -3376,6 +3384,8 @@ func TestGetUpfrontShutdownScript(t *testing.T) {
 		test := test
 
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			var mockPeer testNode
 
 			// If the remote peer in the test should support upfront shutdown,
@@ -3639,6 +3649,8 @@ func TestFundingManagerUpfrontShutdown(t *testing.T) {
 		test := test
 
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			testUpfrontFailure(t, test.pkscript, test.expectErr)
 		})
 	}

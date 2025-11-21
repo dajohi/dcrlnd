@@ -194,11 +194,15 @@ func TestWebAPIFeeEstimator(t *testing.T) {
 	if err := estimator.Start(); err != nil {
 		t.Fatalf("unable to start fee estimator, got: %v", err)
 	}
-	defer estimator.Stop()
+	t.Cleanup(func() {
+		estimator.Stop()
+	})
 
 	for _, tc := range testCases {
 		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
 			est, err := estimator.EstimateFeePerKB(tc.target)
 			if tc.err != "" {
 				if err == nil ||
@@ -225,6 +229,8 @@ func TestWebAPIFeeEstimator(t *testing.T) {
 
 // TestGetCachedFee checks that the fee caching logic works as expected.
 func TestGetCachedFee(t *testing.T) {
+	t.Parallel()
+
 	target := uint32(2)
 	fee := uint32(100)
 
@@ -274,6 +280,8 @@ func TestGetCachedFee(t *testing.T) {
 		tc := tc
 
 		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
 			cachedFee, err := estimator.getCachedFee(tc.confTarget)
 
 			require.Equal(t, tc.expectedFee, cachedFee)

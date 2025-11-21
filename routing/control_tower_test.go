@@ -176,9 +176,13 @@ func TestPaymentControlSubscribeFail(t *testing.T) {
 	t.Parallel()
 
 	t.Run("register attempt", func(t *testing.T) {
+		t.Parallel()
+
 		testPaymentControlSubscribeFail(t, true)
 	})
 	t.Run("no register attempt", func(t *testing.T) {
+		t.Parallel()
+
 		testPaymentControlSubscribeFail(t, false)
 	})
 }

@@ -770,7 +770,10 @@ func TestParseTaggedFields(t *testing.T) {
 		},
 	}
 	for _, tc := range tests {
+		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
 			var invoice Invoice
 			gotErr := parseTaggedFields(&invoice, tc.data, netParams)
 			if tc.wantErr != gotErr {

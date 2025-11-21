@@ -278,6 +278,8 @@ func TestServerCreateSession(t *testing.T) {
 
 	for i, test := range createSessionTests {
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			testServerCreateSession(t, i, test)
 		})
 	}
@@ -633,6 +635,8 @@ func TestServerStateUpdates(t *testing.T) {
 
 	for _, test := range stateUpdateTests {
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			testServerStateUpdates(t, test)
 		})
 	}

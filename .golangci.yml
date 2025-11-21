@@ -24,6 +24,7 @@ linters:
     - reassign
     - rowserrcheck
     - typecheck
+    - tparallel
     - unconvert
     - unused
     - vetshadow

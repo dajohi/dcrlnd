@@ -220,6 +220,8 @@ func TestCircuitMapCleanClosedChannels(t *testing.T) {
 		test := tt
 
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			cfg, circuitMap := newCircuitMap(t)
 
 			// create test circuits

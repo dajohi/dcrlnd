@@ -1375,6 +1375,8 @@ type multiHopFwdTest struct {
 // through the same channel in the case where the switch is configured to allow
 // and disallow same channel circular forwards.
 func TestCircularForwards(t *testing.T) {
+	t.Parallel()
+
 	chanID1, aliceChanID := genID()
 	preimage := [sha256.Size]byte{1}
 	hash := sha256.Sum256(preimage[:])
@@ -1476,6 +1478,8 @@ func TestCircularForwards(t *testing.T) {
 // TestCheckCircularForward tests the error returned by checkCircularForward
 // in cases where we allow and disallow same channel circular forwards.
 func TestCheckCircularForward(t *testing.T) {
+	t.Parallel()
+
 	tests := []struct {
 		name string
 
@@ -1550,6 +1554,8 @@ func TestCheckCircularForward(t *testing.T) {
 // along, then we won't attempt to froward it down al ink that isn't yet able
 // to forward any HTLC's.
 func TestSkipIneligibleLinksMultiHopForward(t *testing.T) {
+	t.Parallel()
+
 	tests := []multiHopFwdTest{
 		// None of the channels is eligible.
 		{
@@ -1596,6 +1602,8 @@ func TestSkipIneligibleLinksMultiHopForward(t *testing.T) {
 	for _, test := range tests {
 		test := test
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			testSkipIneligibleLinksMultiHopForward(t, &test)
 		})
 	}
@@ -2443,7 +2451,7 @@ func TestUpdateFailMalformedHTLCErrorConversion(t *testing.T) {
 	if err != nil {
 		t.Fatalf("unable to create channel: %v", err)
 	}
-	defer cleanUp()
+	t.Cleanup(cleanUp)
 
 	n := newThreeHopNetwork(
 		t, channels.aliceToBob, channels.bobToAlice,
@@ -2482,6 +2490,8 @@ func TestUpdateFailMalformedHTLCErrorConversion(t *testing.T) {
 	}
 
 	t.Run("multi-hop error conversion", func(t *testing.T) {
+		t.Parallel()
+
 		// Now that we have our network up, we'll modify the hop
 		// iterator for the Bob <-> Carol channel to fail to decode in
 		// order to simulate either a replay attack or an issue
@@ -2492,6 +2502,8 @@ func TestUpdateFailMalformedHTLCErrorConversion(t *testing.T) {
 	})
 
 	t.Run("direct channel error conversion", func(t *testing.T) {
+		t.Parallel()
+
 		// Similar to the above test case, we'll now make the Alice <->
 		// Bob link always fail to decode an onion. This differs from
 		// the above test case in that there's no encryption on the
@@ -2774,6 +2786,8 @@ type htlcNotifierEvents func(channels *clusterChannels, htlcID uint64,
 // sending (Alice), forwarding (Bob) and receiving (Carol) node. Test cases
 // are present for saduccessful and failed payments.
 func TestHtlcNotifier(t *testing.T) {
+	t.Parallel()
+
 	tests := []struct {
 		name string
 
@@ -2838,6 +2852,8 @@ func TestHtlcNotifier(t *testing.T) {
 		test := test
 
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			testHtcNotifier(
 				t, test.options, test.iterations,
 				test.expectedEvents,

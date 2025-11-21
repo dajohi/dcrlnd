@@ -143,6 +143,8 @@ func TestInvoiceWorkflow(t *testing.T) {
 	for _, test := range invWorkflowTests {
 		test := test
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			testInvoiceWorkflow(t, test)
 		})
 	}
@@ -303,6 +305,8 @@ func testInvoiceWorkflow(t *testing.T, test invWorkflowTest) {
 // TestAddDuplicatePayAddr asserts that the payment addresses of inserted
 // invoices are unique.
 func TestAddDuplicatePayAddr(t *testing.T) {
+	t.Parallel()
+
 	db, cleanUp, err := MakeTestDB()
 	defer cleanUp()
 	require.NoError(t, err)
@@ -330,6 +334,8 @@ func TestAddDuplicatePayAddr(t *testing.T) {
 // addresses to be inserted if they are blank to support JIT legacy keysend
 // invoices.
 func TestAddDuplicateKeysendPayAddr(t *testing.T) {
+	t.Parallel()
+
 	db, cleanUp, err := MakeTestDB()
 	defer cleanUp()
 	require.NoError(t, err)
@@ -373,6 +379,8 @@ func TestAddDuplicateKeysendPayAddr(t *testing.T) {
 // ensures that the HTLC's payment hash always matches the payment hash in the
 // returned invoice.
 func TestFailInvoiceLookupMPPPayAddrOnly(t *testing.T) {
+	t.Parallel()
+
 	db, cleanUp, err := MakeTestDB()
 	defer cleanUp()
 	require.NoError(t, err)
@@ -2076,6 +2084,8 @@ func TestUpdateHTLCPreimages(t *testing.T) {
 	for _, test := range tests {
 		test := test
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			testUpdateHTLCPreimages(t, test)
 		})
 	}
@@ -2797,6 +2807,8 @@ func TestUpdateHTLC(t *testing.T) {
 	for _, test := range tests {
 		test := test
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			testUpdateHTLC(t, test)
 		})
 	}

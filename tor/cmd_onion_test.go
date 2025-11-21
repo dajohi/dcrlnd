@@ -173,6 +173,8 @@ func TestPrepareAddOnion(t *testing.T) {
 
 		controller := NewController("", tc.targetIPAddress, "")
 		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
 			cmd, err := controller.prepareAddOnion(tc.cfg)
 			require.Equal(t, tc.expectedErr, err)
 			require.Equal(t, tc.expectedCmd, cmd)

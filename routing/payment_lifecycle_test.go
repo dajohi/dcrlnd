@@ -184,7 +184,7 @@ func TestRouterPaymentStateMachine(t *testing.T) {
 	if err != nil {
 		t.Fatalf("unable to create graph: %v", err)
 	}
-	defer testGraph.cleanUp()
+	t.Cleanup(testGraph.cleanUp)
 
 	paymentAmt := lnwire.NewMAtomsFromAtoms(1000)
 
@@ -422,6 +422,8 @@ func TestRouterPaymentStateMachine(t *testing.T) {
 	for _, test := range tests {
 		test := test
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			testPaymentLifecycle(
 				t, test, paymentAmt, startingBlockHeight,
 				testGraph,

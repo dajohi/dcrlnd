@@ -982,6 +982,8 @@ func TestStaticRemoteDowngrade(t *testing.T) {
 		test := test
 
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			writeBufferPool := pool.NewWriteBuffer(
 				pool.DefaultWriteBufferGCInterval,
 				pool.DefaultWriteBufferExpiryInterval,

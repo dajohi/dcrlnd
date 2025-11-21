@@ -23,6 +23,8 @@ type workerPoolTest struct {
 // of worker pools provided by the pool package. Currently this tests the
 // pool.Read and pool.Write instances.
 func TestConcreteWorkerPools(t *testing.T) {
+	t.Parallel()
+
 	const (
 		gcInterval     = time.Second
 		expiryInterval = 250 * time.Millisecond

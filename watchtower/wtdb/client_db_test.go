@@ -771,6 +771,8 @@ func checkAckedUpdates(t *testing.T, session *wtdb.ClientSession,
 // and the mock implementation. This ensures that all databases function
 // identically, especially in the negative paths.
 func TestClientDB(t *testing.T) {
+	t.Parallel()
+
 	dbCfg := &kvdb.BoltConfig{DBTimeout: kvdb.DefaultDBTimeout}
 	dbs := []struct {
 		name string
@@ -901,7 +903,9 @@ func TestClientDB(t *testing.T) {
 			t.Parallel()
 
 			for _, test := range tests {
+				test := test
 				t.Run(test.name, func(t *testing.T) {
+					t.Parallel()
 					h, cleanup := newClientDBHarness(
 						t, db.init,
 					)

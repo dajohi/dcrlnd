@@ -761,6 +761,8 @@ func TestCommitmentSpendValidation(t *testing.T) {
 	for _, tweakless := range []bool{true, false} {
 		tweakless := tweakless
 		t.Run(fmt.Sprintf("tweak=%v", tweakless), func(t *testing.T) {
+			t.Parallel()
+
 			testSpendValidation(t, tweakless)
 		})
 	}

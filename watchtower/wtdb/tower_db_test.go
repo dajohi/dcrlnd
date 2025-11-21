@@ -630,6 +630,8 @@ var stateUpdateInvalidBlobSize = stateUpdateTest{
 }
 
 func TestTowerDB(t *testing.T) {
+	t.Parallel()
+
 	dbCfg := &kvdb.BoltConfig{DBTimeout: kvdb.DefaultDBTimeout}
 	dbs := []struct {
 		name string

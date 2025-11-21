@@ -11,6 +11,8 @@ import (
 
 // TestPeerLog tests the functionality of the peer log struct.
 func TestPeerLog(t *testing.T) {
+	t.Parallel()
+
 	clock := clock.NewTestClock(testNow)
 	peerLog := newPeerLog(clock, 0, nil)
 
@@ -130,6 +132,8 @@ func TestPeerLog(t *testing.T) {
 // TestRateLimitAdd tests the addition of events to the event log with rate
 // limiting in place.
 func TestRateLimitAdd(t *testing.T) {
+	t.Parallel()
+
 	// Create a mock clock specifically for this test so that we can
 	// progress time without affecting the other tests.
 	mockedClock := clock.NewTestClock(testNow)
@@ -251,6 +255,8 @@ func TestRateLimitAdd(t *testing.T) {
 // where no events present, and the case where an additional online period
 // must be added because the event log ends on an online event.
 func TestGetOnlinePeriod(t *testing.T) {
+	t.Parallel()
+
 	fourHoursAgo := testNow.Add(time.Hour * -4)
 	threeHoursAgo := testNow.Add(time.Hour * -3)
 	twoHoursAgo := testNow.Add(time.Hour * -2)
@@ -408,6 +414,8 @@ func TestGetOnlinePeriod(t *testing.T) {
 
 // TestUptime tests channel uptime calculation based on its event log.
 func TestUptime(t *testing.T) {
+	t.Parallel()
+
 	fourHoursAgo := testNow.Add(time.Hour * -4)
 	threeHoursAgo := testNow.Add(time.Hour * -3)
 	twoHoursAgo := testNow.Add(time.Hour * -2)
@@ -547,8 +555,9 @@ func TestUptime(t *testing.T) {
 
 	for _, test := range tests {
 		test := test
-
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			score := &peerLog{
 				onlineEvents: test.events,
 				clock:        clock.NewTestClock(testNow),

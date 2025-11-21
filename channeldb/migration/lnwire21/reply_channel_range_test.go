@@ -12,9 +12,13 @@ import (
 // TestReplyChannelRangeUnsorted tests that decoding a ReplyChannelRange request
 // that contains duplicate or unsorted ids returns an ErrUnsortedSIDs failure.
 func TestReplyChannelRangeUnsorted(t *testing.T) {
+	t.Parallel()
+
 	for _, test := range unsortedSidTests {
 		test := test
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			req := &ReplyChannelRange{
 				EncodingType: test.encType,
 				ShortChanIDs: test.sids,
@@ -66,6 +70,8 @@ func TestReplyChannelRangeEmpty(t *testing.T) {
 	for _, test := range emptyChannelsTests {
 		test := test
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			req := ReplyChannelRange{
 				QueryChannelRange: QueryChannelRange{
 					FirstBlockHeight: 1,

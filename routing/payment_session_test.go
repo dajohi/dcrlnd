@@ -56,6 +56,8 @@ func TestValidateCLTVLimit(t *testing.T) {
 		testCase := testCase
 
 		success := t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+
 			err := ValidateCLTVLimit(
 				testCase.cltvLimit, testCase.finalCltvDelta,
 				testCase.includePadding,

@@ -369,6 +369,8 @@ func TestCommitSweepResolverDelay(t *testing.T) {
 	for _, tc := range testCases {
 		tc := tc
 		ok := t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
 			testCommitSweepResolverDelay(t, tc.sweepErr)
 		})
 		if !ok {

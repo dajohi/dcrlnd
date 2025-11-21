@@ -2303,9 +2303,13 @@ func TestPruneChannelGraphDoubleDisabled(t *testing.T) {
 	t.Parallel()
 
 	t.Run("no_assumechannelvalid", func(t *testing.T) {
+		t.Parallel()
+
 		testPruneChannelGraphDoubleDisabled(t, false)
 	})
 	t.Run("assumechannelvalid", func(t *testing.T) {
+		t.Parallel()
+
 		testPruneChannelGraphDoubleDisabled(t, true)
 	})
 }
@@ -2907,13 +2911,13 @@ func TestSendToRouteStructuredError(t *testing.T) {
 	if err != nil {
 		t.Fatalf("unable to create graph: %v", err)
 	}
-	defer testGraph.cleanUp()
+	t.Cleanup(testGraph.cleanUp)
 
 	const startingBlockHeight = 101
 	ctx, cleanUp := createTestCtxFromGraphInstance(
 		t, startingBlockHeight, testGraph, false,
 	)
-	defer cleanUp()
+	t.Cleanup(cleanUp)
 
 	// Set up an init channel for the control tower, such that we can make
 	// sure the payment is initiated correctly.
@@ -2959,6 +2963,8 @@ func TestSendToRouteStructuredError(t *testing.T) {
 		errorType := errorType
 
 		t.Run(fmt.Sprintf("%T", errorType), func(t *testing.T) {
+			t.Parallel()
+
 			// We'll modify the SendToSwitch method so that it
 			// simulates a failed payment with an error originating
 			// from the final hop in the route.

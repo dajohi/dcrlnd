@@ -1134,6 +1134,8 @@ func TestOldInvoiceRemovalOnStart(t *testing.T) {
 // invoice is settled before expiry (and thus not canceled), and the case
 // where the invoice is expired.
 func TestHeightExpiryWithRegistry(t *testing.T) {
+	t.Parallel()
+
 	t.Run("single shot settled before expiry", func(t *testing.T) {
 		testHeightExpiryWithRegistry(t, 1, true)
 	})

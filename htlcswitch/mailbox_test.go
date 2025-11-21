@@ -544,6 +544,8 @@ func TestMailBoxDuplicateAddPacket(t *testing.T) {
 // for the local and remote dust sum after calling SetFeeRate and
 // SetDustClosure.
 func TestMailBoxDustHandling(t *testing.T) {
+	t.Parallel()
+
 	t.Run("tweakless mailbox dust", func(t *testing.T) {
 		testMailBoxDust(t, channeldb.SingleFunderTweaklessBit)
 	})

@@ -7,6 +7,8 @@ import (
 )
 
 func TestBolt(t *testing.T) {
+	t.Parallel()
+
 	tests := []struct {
 		name string
 		test func(*testing.T, walletdb.DB)

@@ -1281,6 +1281,8 @@ func TestRefreshShortChanID(t *testing.T) {
 // TestCloseInitiator tests the setting of close initiator statuses for
 // cooperative closes and local force closes.
 func TestCloseInitiator(t *testing.T) {
+	t.Parallel()
+
 	tests := []struct {
 		name string
 		// updateChannel is called to update the channel as broadcast,
@@ -1423,6 +1425,8 @@ func TestCloseChannelStatus(t *testing.T) {
 // TestBalanceAtHeight tests lookup of our local and remote balance at a given
 // height.
 func TestBalanceAtHeight(t *testing.T) {
+	t.Parallel()
+
 	const (
 		// Values that will be set on our current local commit in
 		// memory.
@@ -1593,6 +1597,8 @@ func TestBalanceAtHeight(t *testing.T) {
 // ChanStatusDefault which is treated like a flag in the code base even though
 // it isn't.
 func TestHasChanStatus(t *testing.T) {
+	t.Parallel()
+
 	tests := []struct {
 		name   string
 		status ChannelStatus
@@ -1629,6 +1635,8 @@ func TestHasChanStatus(t *testing.T) {
 		test := test
 
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			c := &OpenChannel{
 				chanStatus: test.status,
 			}

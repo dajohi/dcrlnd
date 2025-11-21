@@ -510,6 +510,8 @@ func TestAbandonChannel(t *testing.T) {
 // It tests the case where no filters are provided (which is equivalent to
 // FetchAllOpenChannels) and every combination of pending and waiting close.
 func TestFetchChannels(t *testing.T) {
+	t.Parallel()
+
 	// Create static channel IDs for each kind of channel retrieved by
 	// fetchChannels so that the expected channel IDs can be set in tests.
 	var (

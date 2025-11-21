@@ -368,6 +368,8 @@ func TestSimpleAddSettleWorkflow(t *testing.T) {
 	for _, tweakless := range []bool{true, false} {
 		tweakless := tweakless
 		t.Run(fmt.Sprintf("tweakless=%v", tweakless), func(t *testing.T) {
+			t.Parallel()
+
 			testAddSettleWorkflow(t, tweakless)
 		})
 	}
@@ -576,10 +578,16 @@ func TestCheckCommitTxSize(t *testing.T) {
 // the HTLCs in the descending order of their CLTVs, and asserting that their
 // order is reversed when signing.
 func TestCommitHTLCSigTieBreak(t *testing.T) {
+	t.Parallel()
+
 	t.Run("no restart", func(t *testing.T) {
+		t.Parallel()
+
 		testCommitHTLCSigTieBreak(t, false)
 	})
 	t.Run("restart", func(t *testing.T) {
+		t.Parallel()
+
 		testCommitHTLCSigTieBreak(t, true)
 	})
 }
@@ -707,12 +715,18 @@ func testCommitHTLCSigTieBreak(t *testing.T, restart bool) {
 // with an agreement from both parties, and that the final balances of the
 // close tx check out.
 func TestCooperativeChannelClosure(t *testing.T) {
+	t.Parallel()
+
 	t.Run("tweakless", func(t *testing.T) {
+		t.Parallel()
+
 		testCoopClose(t, &coopCloseTestCase{
 			chanType: channeldb.SingleFunderTweaklessBit,
 		})
 	})
 	t.Run("anchors", func(t *testing.T) {
+		t.Parallel()
+
 		testCoopClose(t, &coopCloseTestCase{
 			chanType: channeldb.SingleFunderTweaklessBit |
 				channeldb.AnchorOutputsBit,
@@ -828,13 +842,19 @@ func testCoopClose(t *testing.T, testCase *coopCloseTestCase) {
 // force close generates HTLC resolutions that are capable of sweeping both
 // incoming and outgoing HTLC's.
 func TestForceClose(t *testing.T) {
+	t.Parallel()
+
 	t.Run("tweakless", func(t *testing.T) {
+		t.Parallel()
+
 		testForceClose(t, &forceCloseTestCase{
 			chanType:           channeldb.SingleFunderTweaklessBit,
 			expectedCommitSize: input.CommitmentTxSize,
 		})
 	})
 	t.Run("anchors", func(t *testing.T) {
+		t.Parallel()
+
 		testForceClose(t, &forceCloseTestCase{
 			chanType: channeldb.SingleFunderTweaklessBit |
 				channeldb.AnchorOutputsBit,
@@ -8238,6 +8258,8 @@ func TestIdealCommitFeeRate(t *testing.T) {
 
 	// Test ideal fee rates for an anchor channel
 	t.Run("anchor-channel", func(t *testing.T) {
+		t.Parallel()
+
 		anchorChannel, _, cleanUp, err := CreateTestChannels(
 			channeldb.SingleFunderTweaklessBit |
 				channeldb.AnchorOutputsBit |
@@ -8367,6 +8389,8 @@ func TestChannelFeeRateFloor(t *testing.T) {
 
 // TestFetchParent tests lookup of an entry's parent in the appropriate log.
 func TestFetchParent(t *testing.T) {
+	t.Parallel()
+
 	tests := []struct {
 		name          string
 		remoteChain   bool
@@ -8550,6 +8574,8 @@ func TestFetchParent(t *testing.T) {
 		test := test
 
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			// Create a lightning channel with newly initialized
 			// local and remote logs.
 			lc := LightningChannel{
@@ -8597,6 +8623,8 @@ func TestFetchParent(t *testing.T) {
 // send and receive balances. This test does not check htlc mutation on a htlc
 // level.
 func TestEvaluateView(t *testing.T) {
+	t.Parallel()
+
 	const (
 		// addHeight is a non-zero height that is used for htlc adds.
 		addHeight = 200
@@ -8882,6 +8910,8 @@ func TestEvaluateView(t *testing.T) {
 		test := test
 
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			lc := LightningChannel{
 				channelState: &channeldb.OpenChannel{
 					TotalMAtomsSent:     0,
@@ -8993,6 +9023,8 @@ type heights struct {
 // TestProcessFeeUpdate tests the applying of fee updates and mutation of
 // local and remote add and remove heights on update messages.
 func TestProcessFeeUpdate(t *testing.T) {
+	t.Parallel()
+
 	const (
 		// height is a non-zero height that can be used for htlcs
 		// heights.
@@ -9154,6 +9186,8 @@ func TestProcessFeeUpdate(t *testing.T) {
 		test := test
 
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			// Create a fee update with add and remove heights as
 			// set in the test.
 			heights := test.startHeights
@@ -9201,6 +9235,8 @@ func checkHeights(t *testing.T, update *PaymentDescriptor, expected heights) {
 // we process adds, settles and fails. It also tests the mutating of add and
 // remove heights.
 func TestProcessAddRemoveEntry(t *testing.T) {
+	t.Parallel()
+
 	const (
 		// addHeight is a non-zero addHeight that is used for htlc
 		// add heights.
@@ -10116,6 +10152,8 @@ func assertCleanOrDirty(clean bool, alice, bob *LightningChannel,
 // TestChannelGetDustSum tests that we correctly calculate the channel's dust
 // sum for the local and remote commitments.
 func TestChannelGetDustSum(t *testing.T) {
+	t.Parallel()
+
 	t.Run("dust sum tweakless", func(t *testing.T) {
 		testGetDustSum(t, channeldb.SingleFunderTweaklessBit)
 	})

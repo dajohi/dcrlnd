@@ -2088,6 +2088,8 @@ func TestChannelArbitratorPendingExpiredHTLC(t *testing.T) {
 // TestRemoteCloseInitiator tests the setting of close initiator statuses
 // for remote force closes and breaches.
 func TestRemoteCloseInitiator(t *testing.T) {
+	t.Parallel()
+
 	// getCloseSummary returns a unilateral close summary for the channel
 	// provided.
 	getCloseSummary := func(channel *channeldb.OpenChannel) *RemoteUnilateralCloseInfo {
@@ -2235,6 +2237,8 @@ func TestRemoteCloseInitiator(t *testing.T) {
 // TestFindCommitmentDeadline tests the logic used to determine confirmation
 // deadline is implemented as expected.
 func TestFindCommitmentDeadline(t *testing.T) {
+	t.Parallel()
+
 	// Create a testing channel arbitrator.
 	log := &mockArbitratorLog{
 		state:     StateDefault,

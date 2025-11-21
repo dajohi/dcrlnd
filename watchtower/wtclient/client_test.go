@@ -1514,6 +1514,8 @@ var clientTests = []clientTest{
 // TestClient executes the client test suite, asserting the ability to backup
 // states in a number of failure cases and it's reliability during shutdown.
 func TestClient(t *testing.T) {
+	t.Parallel()
+
 	for _, test := range clientTests {
 		tc := test
 		t.Run(tc.name, func(t *testing.T) {

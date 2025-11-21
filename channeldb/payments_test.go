@@ -196,6 +196,8 @@ func deletePayment(t *testing.T, db *DB, paymentHash lntypes.Hash, seqNr uint64)
 // TestQueryPayments tests retrieval of payments with forwards and reversed
 // queries.
 func TestQueryPayments(t *testing.T) {
+	t.Parallel()
+
 	// Define table driven test for QueryPayments.
 	// Test payments have sequence indices [1, 3, 4, 5, 6, 7].
 	// Note that the payment with index 7 has the same payment hash as 6,
@@ -516,10 +518,12 @@ func TestQueryPayments(t *testing.T) {
 // case where a specific duplicate is not found and the duplicates bucket is not
 // present when we expect it to be.
 func TestFetchPaymentWithSequenceNumber(t *testing.T) {
+	t.Parallel()
+
 	db, cleanup, err := MakeTestDB()
 	require.NoError(t, err)
 
-	defer cleanup()
+	t.Cleanup(cleanup)
 
 	pControl := NewPaymentControl(db)
 
@@ -614,6 +618,8 @@ func TestFetchPaymentWithSequenceNumber(t *testing.T) {
 		test := test
 
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			err := kvdb.Update(db,
 				func(tx walletdb.ReadWriteTx) error {
 

@@ -8,6 +8,8 @@ import (
 // TestNewCircularBuffer tests the size parameter check when creating a circular
 // buffer.
 func TestNewCircularBuffer(t *testing.T) {
+	t.Parallel()
+
 	tests := []struct {
 		name          string
 		size          int
@@ -34,6 +36,8 @@ func TestNewCircularBuffer(t *testing.T) {
 		test := test
 
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			_, err := NewCircularBuffer(test.size)
 			if err != test.expectedError {
 				t.Fatalf("expected: %v, got: %v",
@@ -46,6 +50,8 @@ func TestNewCircularBuffer(t *testing.T) {
 // TestCircularBuffer tests the adding and listing of items in a circular
 // buffer.
 func TestCircularBuffer(t *testing.T) {
+	t.Parallel()
+
 	tests := []struct {
 		name          string
 		size          int
@@ -130,6 +136,8 @@ func TestCircularBuffer(t *testing.T) {
 
 // TestLatest tests fetching of the last item added to a circular buffer.
 func TestLatest(t *testing.T) {
+	t.Parallel()
+
 	tests := []struct {
 		name string
 		size int
@@ -176,7 +184,7 @@ func TestLatest(t *testing.T) {
 		test := test
 
 		t.Run(test.name, func(t *testing.T) {
-			//t.Parallel()
+			t.Parallel()
 
 			buffer, err := NewCircularBuffer(test.size)
 			if err != nil {

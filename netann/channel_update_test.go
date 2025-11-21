@@ -108,6 +108,8 @@ func TestUpdateDisableFlag(t *testing.T) {
 	for _, tc := range updateDisableTests {
 		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
 			// Create the initial update, the only fields we are
 			// concerned with in this test are the timestamp and the
 			// channel flags.

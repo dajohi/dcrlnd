@@ -951,6 +951,8 @@ func TestPaymentControlMultiShard(t *testing.T) {
 			test.settleFirst, test.settleLast)
 
 		t.Run(subTest, func(t *testing.T) {
+			t.Parallel()
+
 			runSubTest(t, test)
 		})
 	}

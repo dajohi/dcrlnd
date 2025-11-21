@@ -526,15 +526,21 @@ func TestChannelLinkSingleHopPayment(t *testing.T) {
 // because this is currently the configured value in lnd
 // (defaultOutgoingCltvRejectDelta).
 func TestChannelLinkMultiHopPayment(t *testing.T) {
+	t.Parallel()
+
 	t.Run(
 		"bobOutgoingCltvRejectDelta 3",
 		func(t *testing.T) {
+			t.Parallel()
+
 			testChannelLinkMultiHopPayment(t, 3)
 		},
 	)
 	t.Run(
 		"bobOutgoingCltvRejectDelta 0",
 		func(t *testing.T) {
+			t.Parallel()
+
 			testChannelLinkMultiHopPayment(t, 0)
 		},
 	)
@@ -3720,6 +3726,8 @@ func TestChannelRetransmission(t *testing.T) {
 
 	for _, test := range retransmissionTests {
 		passed := t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			paymentWithRestart(t, test.messages)
 		})
 
@@ -3734,6 +3742,8 @@ func TestChannelRetransmission(t *testing.T) {
 // ensure that ie behaves properly. We should only update the fee if it
 // deviates from our current fee by more 10% or more.
 func TestShouldAdjustCommitFee(t *testing.T) {
+	t.Parallel()
+
 	tests := []struct {
 		netFee       chainfee.AtomPerKByte
 		chanFee      chainfee.AtomPerKByte
@@ -4955,7 +4965,10 @@ func TestChannelLinkBatchPreimageWrite(t *testing.T) {
 	}
 
 	for _, test := range tests {
+		test := test
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			testChannelLinkBatchPreimageWrite(t, test.disconnect)
 		})
 	}
