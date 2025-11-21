@@ -21,13 +21,6 @@ import (
 func testOpenChannelAfterReorg(net *lntest.NetworkHarness, t *harnessTest) {
 	var ctxb = context.Background()
 
-	// Currently disabled due to
-	// https://github.com/decred/dcrwallet/issues/1710. Re-assess after
-	// that is fixed.
-	if net.BackendCfg.Name() == "spv" {
-		t.Skipf("Skipping for SPV for the moment")
-	}
-
 	// Set up a new miner that we can use to cause a reorg.
 	tempLogDir := ".tempminerlogs"
 	logFilename := "output-open_channel_reorg-temp_miner.log"
