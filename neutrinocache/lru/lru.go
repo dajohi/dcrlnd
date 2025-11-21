@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/decred/dcrlnd/neutrinocache"
+	cache "github.com/decred/dcrlnd/neutrinocache"
 )
 
 // elementMap is an alias for a map from a generic interface to a list.Element.

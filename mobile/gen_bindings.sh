@@ -68,7 +68,7 @@ for file in ../lnrpc/**/*.proto
 do
     DIRECTORY=$(dirname ${file})
     tag=$(basename ${DIRECTORY})
-    build_tags="// +build $tag"
+    build_tags="//go:build $tag"
     lis="lightningLis"
 
     opts="package_name=$pkg,target_package=$target_pkg/$tag,build_tags=$build_tags,api_prefix=$use_prefix,defaultlistener=$lis"
