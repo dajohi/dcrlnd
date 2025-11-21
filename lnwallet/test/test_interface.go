@@ -3622,6 +3622,8 @@ func runTests(t *testing.T, walletDriver *lnwallet.WalletDriver,
 		testName := fmt.Sprintf("%v/%v:%v", walletType, backEnd,
 			walletTest.name)
 		success := t.Run(testName, func(t *testing.T) {
+			t.Parallel()
+
 			if backEnd == "spv" &&
 				strings.Contains(walletTest.name, "dual funder") {
 				t.Skip("skipping dual funder tests for spv")

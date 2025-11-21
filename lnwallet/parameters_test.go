@@ -75,9 +75,9 @@ func TestDustLimitForSize(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		test := test
-
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			dustlimit := DustLimitForSize(test.size)
 			require.Equal(t, test.expectedLimit, dustlimit)
 		})

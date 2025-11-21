@@ -13,6 +13,7 @@ linters:
     - nosprintfhostport
     - reassign
     - rowserrcheck
+    - tparallel
     - unconvert
     - unused
     - usetesting

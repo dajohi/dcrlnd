@@ -493,6 +493,8 @@ func TestPsbtVerify(t *testing.T) {
 	for _, tc := range testCases {
 		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
 			// Reset the state from a previous test and create a new
 			// pending PSBT that we can manipulate.
 			psbtIntent.shouldPublish = tc.shouldPublish
@@ -662,6 +664,8 @@ func TestPsbtFinalize(t *testing.T) {
 	for _, tc := range testCases {
 		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
 			// Reset the state from a previous test and create a new
 			// pending PSBT that we can manipulate.
 			psbtIntent.State = PsbtOutputKnown

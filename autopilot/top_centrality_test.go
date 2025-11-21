@@ -71,6 +71,8 @@ func testTopCentrality(t *testing.T, graph testGraph,
 // of channels from 0 to N-1 simulating the whole range from non-connected to
 // fully connected.
 func TestTopCentrality(t *testing.T) {
+	t.Parallel()
+
 	// Generate channels: {}, {0}, {0, 1}, ... {0, 1, ..., N-1}
 	channelsWith := [][]int{nil}
 

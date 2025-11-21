@@ -104,6 +104,8 @@ func TestParsePkScript(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			pkScript, err := ParsePkScript(
 				scriptVersion, test.pkScript,
 			)
@@ -336,6 +338,8 @@ func TestComputePkScript(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			valid := test.pkScript != nil
 			pkScript, err := ComputePkScript(
 				scriptVersion, test.sigScript,

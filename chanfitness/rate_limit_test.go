@@ -11,6 +11,8 @@ import (
 // It creates test cases that are relative to our constants so that they
 // can be adjusted without breaking the unit test.
 func TestGetRateLimit(t *testing.T) {
+	t.Parallel()
+
 	tests := []struct {
 		name      string
 		flapCount int
@@ -52,6 +54,8 @@ func TestGetRateLimit(t *testing.T) {
 
 // TestCooldownFlapCount tests cooldown of all time flap counts.
 func TestCooldownFlapCount(t *testing.T) {
+	t.Parallel()
+
 	tests := []struct {
 		name      string
 		flapCount int

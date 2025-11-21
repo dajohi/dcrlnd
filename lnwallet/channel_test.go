@@ -366,8 +366,9 @@ func TestSimpleAddSettleWorkflow(t *testing.T) {
 	t.Parallel()
 
 	for _, tweakless := range []bool{true, false} {
-		tweakless := tweakless
 		t.Run(fmt.Sprintf("tweakless=%v", tweakless), func(t *testing.T) {
+			t.Parallel()
+
 			testAddSettleWorkflow(t, tweakless)
 		})
 	}
@@ -707,12 +708,18 @@ func testCommitHTLCSigTieBreak(t *testing.T, restart bool) {
 // with an agreement from both parties, and that the final balances of the
 // close tx check out.
 func TestCooperativeChannelClosure(t *testing.T) {
+	t.Parallel()
+
 	t.Run("tweakless", func(t *testing.T) {
+		t.Parallel()
+
 		testCoopClose(t, &coopCloseTestCase{
 			chanType: channeldb.SingleFunderTweaklessBit,
 		})
 	})
 	t.Run("anchors", func(t *testing.T) {
+		t.Parallel()
+
 		testCoopClose(t, &coopCloseTestCase{
 			chanType: channeldb.SingleFunderTweaklessBit |
 				channeldb.AnchorOutputsBit,
@@ -828,13 +835,19 @@ func testCoopClose(t *testing.T, testCase *coopCloseTestCase) {
 // force close generates HTLC resolutions that are capable of sweeping both
 // incoming and outgoing HTLC's.
 func TestForceClose(t *testing.T) {
+	t.Parallel()
+
 	t.Run("tweakless", func(t *testing.T) {
+		t.Parallel()
+
 		testForceClose(t, &forceCloseTestCase{
 			chanType:           channeldb.SingleFunderTweaklessBit,
 			expectedCommitSize: input.CommitmentTxSize,
 		})
 	})
 	t.Run("anchors", func(t *testing.T) {
+		t.Parallel()
+
 		testForceClose(t, &forceCloseTestCase{
 			chanType: channeldb.SingleFunderTweaklessBit |
 				channeldb.AnchorOutputsBit,
@@ -8238,6 +8251,8 @@ func TestIdealCommitFeeRate(t *testing.T) {
 
 	// Test ideal fee rates for an anchor channel
 	t.Run("anchor-channel", func(t *testing.T) {
+		t.Parallel()
+
 		anchorChannel, _, cleanUp, err := CreateTestChannels(
 			channeldb.SingleFunderTweaklessBit |
 				channeldb.AnchorOutputsBit |
@@ -8550,6 +8565,8 @@ func TestFetchParent(t *testing.T) {
 		test := test
 
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			// Create a lightning channel with newly initialized
 			// local and remote logs.
 			lc := LightningChannel{
@@ -8882,6 +8899,8 @@ func TestEvaluateView(t *testing.T) {
 		test := test
 
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			lc := LightningChannel{
 				channelState: &channeldb.OpenChannel{
 					TotalMAtomsSent:     0,

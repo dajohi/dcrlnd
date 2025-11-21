@@ -408,6 +408,8 @@ func TestGetOnlinePeriod(t *testing.T) {
 
 // TestUptime tests channel uptime calculation based on its event log.
 func TestUptime(t *testing.T) {
+	t.Parallel()
+
 	fourHoursAgo := testNow.Add(time.Hour * -4)
 	threeHoursAgo := testNow.Add(time.Hour * -3)
 	twoHoursAgo := testNow.Add(time.Hour * -2)
@@ -546,9 +548,9 @@ func TestUptime(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		test := test
-
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			score := &peerLog{
 				onlineEvents: test.events,
 				clock:        clock.NewTestClock(testNow),

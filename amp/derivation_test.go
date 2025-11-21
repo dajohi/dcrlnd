@@ -42,6 +42,8 @@ var sharerTests = []sharerTest{
 // asserting that shares are properly computed and, when reconstructed by the
 // receiver, produce identical child hashes and preimages as the sender.
 func TestSharer(t *testing.T) {
+	t.Parallel()
+
 	for _, test := range sharerTests {
 		test := test
 		t.Run(test.name, func(t *testing.T) {

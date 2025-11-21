@@ -133,6 +133,8 @@ func TestPrefAttachmentSelectTwoVertexes(t *testing.T) {
 
 	for _, graph := range chanGraphs {
 		success := t.Run(graph.name, func(t1 *testing.T) {
+			t.Parallel()
+
 			graph, cleanup, err := graph.genFunc()
 			if err != nil {
 				t1.Fatalf("unable to create graph: %v", err)
@@ -365,6 +367,8 @@ func TestPrefAttachmentSelectSkipNodes(t *testing.T) {
 
 	for _, graph := range chanGraphs {
 		success := t.Run(graph.name, func(t1 *testing.T) {
+			t.Parallel()
+
 			graph, cleanup, err := graph.genFunc()
 			if err != nil {
 				t1.Fatalf("unable to create graph: %v", err)
