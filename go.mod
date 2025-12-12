@@ -11,7 +11,7 @@ require (
 	github.com/coreos/go-systemd v0.0.0-20191104093116-d3cd4ed1dbcf
 	github.com/davecgh/go-spew v1.1.1
 	github.com/decred/dcrd/addrmgr/v3 v3.0.0
-	github.com/decred/dcrd/bech32 v1.1.3
+	github.com/decred/dcrd/bech32 v1.1.4
 	github.com/decred/dcrd/blockchain/stake/v5 v5.0.2
 	github.com/decred/dcrd/blockchain/standalone/v2 v2.2.2
 	github.com/decred/dcrd/chaincfg/chainhash v1.0.5
@@ -28,7 +28,7 @@ require (
 	github.com/decred/dcrd/rpcclient/v8 v8.1.0
 	github.com/decred/dcrd/txscript/v4 v4.1.2
 	github.com/decred/dcrd/wire v1.7.2
-	github.com/decred/dcrtest/dcrdtest v1.0.1-0.20240514160637-ade8c37ad1db
+	github.com/decred/dcrtest/dcrdtest v1.0.1-0.20251125155744-84fc45da4d58
 	github.com/decred/lightning-onion/v4 v4.0.1
 	github.com/decred/slog v1.2.0
 	github.com/fergusstrange/embedded-postgres v1.25.0
@@ -45,8 +45,8 @@ require (
 	github.com/jackpal/gateway v1.0.10
 	github.com/jackpal/go-nat-pmp v1.0.2
 	github.com/jedib0t/go-pretty v4.3.0+incompatible
-	github.com/jessevdk/go-flags v1.5.0
-	github.com/jrick/logrotate v1.0.0
+	github.com/jessevdk/go-flags v1.6.1
+	github.com/jrick/logrotate v1.1.2
 	github.com/kkdai/bstream v1.0.0
 	github.com/matheusd/google-protobuf-protos v0.0.0-20200707194502-ef6ec5c2266f
 	github.com/matheusd/protobuf-hex-display v1.3.3-0.20201012153224-75fb8d4840f1
@@ -87,8 +87,7 @@ require (
 	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
 	github.com/dchest/siphash v1.2.3 // indirect
 	github.com/decred/base58 v1.0.6 // indirect
-	github.com/decred/dcrd v1.8.0 // indirect
-	github.com/decred/dcrd/addrmgr/v2 v2.0.4 // indirect
+	github.com/decred/dcrd v1.10.0 // indirect
 	github.com/decred/dcrd/certgen v1.2.0 // indirect
 	github.com/decred/dcrd/chaincfg v1.5.2 // indirect
 	github.com/decred/dcrd/connmgr/v3 v3.1.3 // indirect
@@ -99,10 +98,9 @@ require (
 	github.com/decred/dcrd/crypto/ripemd160 v1.0.2 // indirect
 	github.com/decred/dcrd/database/v3 v3.0.3 // indirect
 	github.com/decred/dcrd/dcrec/edwards/v2 v2.0.4 // indirect
-	github.com/decred/dcrd/lru v1.1.2 // indirect
-	github.com/decred/dcrd/math/uint256 v1.0.1 // indirect
+	github.com/decred/dcrd/math/uint256 v1.0.2 // indirect
 	github.com/decred/dcrd/mixing v0.6.0 // indirect
-	github.com/decred/dcrd/peer/v3 v3.0.2 // indirect
+	github.com/decred/dcrd/peer/v3 v3.2.0 // indirect
 	github.com/decred/go-socks v1.1.0 // indirect
 	github.com/decred/vspd/client/v4 v4.0.2 // indirect
 	github.com/decred/vspd/types/v3 v3.0.0 // indirect
